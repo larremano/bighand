@@ -22,10 +22,15 @@ public class Amigo extends Contacto {
 
 	@Override
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		return this.getId() + "; " + this.getNombre() + "; " + this.getDireccion() + "; "
-				+ this.getTelefono() + "; " + this.getEMail() + "; "
-				+ sdf.format(this.getFechaNacimiento());
+		if(this.getFechaNacimiento()==null){
+			return this.getId() + "; " + this.getNombre() + "; " + this.getDireccion() + "; "
+			+ this.getTelefono() + "; " + this.getEMail();
+		}else{
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			return this.getId() + "; " + this.getNombre() + "; " + this.getDireccion() + "; "
+			+ this.getTelefono() + "; " + this.getEMail() + "; "
+			+ sdf.format(this.getFechaNacimiento());
+		}
 	}
 
 }

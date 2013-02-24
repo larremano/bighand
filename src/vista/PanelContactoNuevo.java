@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 
 
 import controlador.ControladorContactos;
+import controlador.ControladorVentana;
 
 import modelo.Amigo;
 import modelo.Contacto;
@@ -257,14 +258,33 @@ public class PanelContactoNuevo extends JPanel{
 	}
 
 	protected void nuevoContacto() {
-		if (jRBAmigo.isSelected()) {
-			contacto = new Amigo(jTFNombre.getText());
-			Date date = new Date();
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			if(!"".equals(jTFFechaNacimiento.getText())){
-				try {
-					date = sdf.parse(jTFFechaNacimiento.getText());
-					((Amigo) contacto).setFechaNacimiento(date);
+		if(jTFNombre.getText().equals("")){
+			jTFNombre.setBackground(Color.RED);
+			jTFNombre.setText("Introduce un contacto");
+		}else{
+			if (jRBAmigo.isSelected()) {
+				contacto = new Amigo(jTFNombre.getText());
+				Date date = new Date();
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				if(!"".equals(jTFFechaNacimiento.getText())){
+					try {
+						date = sdf.parse(jTFFechaNacimiento.getText());
+						((Amigo) contacto).setFechaNacimiento(date);
+						contacto.setDireccion(jTFDireccion.getText());
+						contacto.setTelefono(jTFTelefono.getText());
+						contacto.setEMail(jTFeMail.getText());
+						ControladorContactos cc = new ControladorContactos();
+						cc.cargar(contacto);
+						cv.getAgenda().refresh();
+						volverInicio();
+						
+					} catch (ParseException e) {
+						jTFFechaNacimiento.setBackground(Color.RED);
+						jTFFechaNacimiento.setText("Introduce una fecha válida");
+						//e.printStackTrace();
+					}
+				}else{
+					((Amigo) contacto).setFechaNacimiento(null);
 					contacto.setDireccion(jTFDireccion.getText());
 					contacto.setTelefono(jTFTelefono.getText());
 					contacto.setEMail(jTFeMail.getText());
@@ -272,23 +292,18 @@ public class PanelContactoNuevo extends JPanel{
 					cc.cargar(contacto);
 					cv.getAgenda().refresh();
 					volverInicio();
-
-				} catch (ParseException e) {
-					jTFFechaNacimiento.setBackground(Color.RED);
-					jTFFechaNacimiento.setText("Introduce una fecha válida");
-					//e.printStackTrace();
 				}
+			} else {
+				contacto = new Profesional(jTFNombre.getText());
+				((Profesional) contacto).setSector(jTFSector.getText());
+				contacto.setDireccion(jTFDireccion.getText());
+				contacto.setTelefono(jTFTelefono.getText());
+				contacto.setEMail(jTFeMail.getText());
+				ControladorContactos cc = new ControladorContactos();
+				cc.cargar(contacto);
+				cv.getAgenda().refresh();
+				volverInicio();
 			}
-		} else {
-			contacto = new Profesional(jTFNombre.getText());
-			((Profesional) contacto).setSector(jTFSector.getText());
-			contacto.setDireccion(jTFDireccion.getText());
-			contacto.setTelefono(jTFTelefono.getText());
-			contacto.setEMail(jTFeMail.getText());
-			ControladorContactos cc = new ControladorContactos();
-			cc.cargar(contacto);
-			cv.getAgenda().refresh();
-			volverInicio();
 		}
 	}
 

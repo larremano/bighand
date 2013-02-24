@@ -17,6 +17,8 @@ import javax.swing.JTextField;
 import modelo.Cita;
 import modelo.Contacto;
 import controlador.ControladorCitas;
+import controlador.ControladorVentana;
+
 import javax.swing.JComboBox;
 
 public class PanelVisualizarCita extends JPanel{

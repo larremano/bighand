@@ -25,6 +25,7 @@ import modelo.Profesional;
 
 import controlador.ControladorCitas;
 import controlador.ControladorListadoContactos;
+import controlador.ControladorVentana;
 
 public class PanelCitaNueva extends JPanel{
 	

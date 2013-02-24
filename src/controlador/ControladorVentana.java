@@ -1,6 +1,15 @@
-package vista;
+package controlador;
 
 import java.awt.BorderLayout;
+
+import vista.PanelCitaNueva;
+import vista.PanelContactoNuevo;
+import vista.PanelInicio;
+import vista.PanelListarCitas;
+import vista.PanelListarContactos;
+import vista.PanelVisualizarCita;
+import vista.PanelVisualizarContacto;
+import vista.VentanaInicio;
 
 
 import modelo.Agenda;

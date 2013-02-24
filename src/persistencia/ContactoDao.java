@@ -27,8 +27,12 @@ public class ContactoDao {
 				pst.setString(2, contacto.getDireccion());
 				pst.setString(3, contacto.getTelefono());
 				pst.setString(4, contacto.getEMail());
-				java.sql.Date sqlDate = new java.sql.Date(((Amigo)contacto).getFechaNacimiento().getTime());
-				pst.setDate(5, sqlDate);
+				if(((Amigo)contacto).getFechaNacimiento()==null){
+					pst.setDate(5, null);
+				}else{
+					java.sql.Date sqlDate = new java.sql.Date(((Amigo)contacto).getFechaNacimiento().getTime());
+					pst.setDate(5, sqlDate);
+				}
 			} else {
 				pst = cx.prepareStatement("insert into profesionales "
 						+ "(NOMBRE,DIRECCION,TELEFONO,EMAIL,SECTOR)"
@@ -96,8 +100,12 @@ public class ContactoDao {
 			pst.setString(2, contacto.getDireccion());
 			pst.setString(3, contacto.getTelefono());
 			pst.setString(4, contacto.getEMail());
-			java.sql.Date sqlDate = new java.sql.Date(((Amigo)contacto).getFechaNacimiento().getTime());
-			pst.setDate(5, sqlDate);
+			if(((Amigo)contacto).getFechaNacimiento()==null){
+				pst.setDate(5, null);
+			}else{
+				java.sql.Date sqlDate = new java.sql.Date(((Amigo)contacto).getFechaNacimiento().getTime());
+				pst.setDate(5, sqlDate);
+			}
 			pst.setInt(6, contacto.getId());
 			
 			pst.executeUpdate();

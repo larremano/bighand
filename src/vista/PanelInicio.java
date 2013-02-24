@@ -18,6 +18,8 @@ import java.util.Map;
 
 import javax.swing.SwingConstants;
 
+import controlador.ControladorVentana;
+
 public class PanelInicio extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private ControladorVentana cv = null;
@@ -161,222 +163,7 @@ public class PanelInicio extends JPanel {
 			}
 		}
 	}
-/*
-	private void implementarCalendario() {
-		int [] arrayMes = Calendario.calcularMes();
-		int indice = 1;
-		if(arrayMes[0] == 0){
-			jLabel1.setText("");
-		}else{
-			jLabel1.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[1] == 0){
-			jLabel2.setText("");
-		}else{
-			jLabel2.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[2] == 0){
-			jLabel3.setText("");
-		}else{
-			jLabel3.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[3] == 0){
-			jLabel4.setText("");
-		}else{
-			jLabel4.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[4] == 0){
-			jLabel5.setText("");
-		}else{
-			jLabel5.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[5] == 0){
-			jLabel6.setText("");
-		}else{
-			jLabel6.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[6] == 0){
-			jLabel7.setText("");
-		}else{
-			jLabel7.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[7] == 0){
-			jLabel8.setText("");
-		}else{
-			jLabel8.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[8] == 0){
-			jLabel9.setText("");
-		}else{
-			jLabel9.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[9] == 0){
-			jLabel10.setText("");
-		}else{
-			jLabel10.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[10] == 0){
-			jLabel11.setText("");
-		}else{
-			jLabel11.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[11] == 0){
-			jLabel12.setText("");
-		}else{
-			jLabel12.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[12] == 0){
-			jLabel13.setText("");
-		}else{
-			jLabel13.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[13] == 0){
-			jLabel14.setText("");
-		}else{
-			jLabel14.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[14] == 0){
-			jLabel15.setText("");
-		}else{
-			jLabel15.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[15] == 0){
-			jLabel16.setText("");
-		}else{
-			jLabel16.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[16] == 0){
-			jLabel17.setText("");
-		}else{
-			jLabel17.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[17] == 0){
-			jLabel18.setText("");
-		}else{
-			jLabel18.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[18] == 0){
-			jLabel19.setText("");
-		}else{
-			jLabel19.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[19] == 0){
-			jLabel20.setText("");
-		}else{
-			jLabel20.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[20] == 0){
-			jLabel21.setText("");
-		}else{
-			jLabel21.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[21] == 0){
-			jLabel22.setText("");
-		}else{
-			jLabel22.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[22] == 0){
-			jLabel23.setText("");
-		}else{
-			jLabel23.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[23] == 0){
-			jLabel24.setText("");
-		}else{
-			jLabel24.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[24] == 0){
-			jLabel25.setText("");
-		}else{
-			jLabel25.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[25] == 0){
-			jLabel26.setText("");
-		}else{
-			jLabel26.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[26] == 0){
-			jLabel27.setText("");
-		}else{
-			jLabel27.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[27] == 0){
-			jLabel28.setText("");
-		}else{
-			jLabel28.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[28] == 0){
-			jLabel29.setText("");
-		}else{
-			jLabel29.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[29] == 0){
-			jLabel30.setText("");
-		}else{
-			jLabel30.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[30] == 0){
-			jLabel31.setText("");
-		}else{
-			jLabel31.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[31] == 0){
-			jLabel32.setText("");
-		}else{
-			jLabel32.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[32] == 0){
-			jLabel33.setText("");
-		}else{
-			jLabel33.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[33] == 0){
-			jLabel34.setText("");
-		}else{
-			jLabel34.setText(Integer.toString(indice));
-			indice++;
-		}
-		if(arrayMes[34] == 0){
-			jLabel35.setText("");
-		}else{
-			jLabel35.setText(Integer.toString(indice));
-			indice++;
-		}		
-	}
-*/
+
 	private JPanel getJPBotonera() {
 		if (jPBotonera == null) {
 			GridBagConstraints gridBagConstraints2 = new GridBagConstraints();
@@ -502,11 +289,6 @@ public class PanelInicio extends JPanel {
 		cv.crearPanelCitaNueva();
 	}
 
-	/**
-	 * This method initializes jBVerCitas	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJBVerCitas() {
 		if (jBVerCitas == null) {
 			jBVerCitas = new JButton();
@@ -524,11 +306,6 @@ public class PanelInicio extends JPanel {
 		cv.crearPanelListarCitas();
 	}
 
-	/**
-	 * This method initializes jPCalendario	
-	 * 	
-	 * @return javax.swing.JPanel	
-	 */
 	private JPanel getJPCalendario() {
 		if (jPCalendario == null) {
 			jLabel49 = new JLabel();
@@ -787,11 +564,6 @@ public class PanelInicio extends JPanel {
 		return jPCalendario;
 	}
 
-	/**
-	 * This method initializes jBDerecha	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJBDerecha() {
 		if (jBDerecha == null) {
 			jBDerecha = new JButton();
@@ -808,11 +580,6 @@ public class PanelInicio extends JPanel {
 		return jBDerecha;
 	}
 
-	/**
-	 * This method initializes jBIzquierda	
-	 * 	
-	 * @return javax.swing.JButton	
-	 */
 	private JButton getJBIzquierda() {
 		if (jBIzquierda == null) {
 			jBIzquierda = new JButton();

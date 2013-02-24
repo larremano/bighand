@@ -18,6 +18,7 @@ import modelo.Contacto;
 import modelo.Profesional;
 
 import controlador.ControladorListadoContactos;
+import controlador.ControladorVentana;
 
 public class PanelListarContactos extends JPanel {
 

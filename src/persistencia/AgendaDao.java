@@ -85,8 +85,12 @@ public class AgendaDao {
 				contactoAux.setDireccion(rs.getString("DIRECCION"));
 				contactoAux.setTelefono(rs.getString("TELEFONO"));
 				contactoAux.setEMail(rs.getString("EMAIL"));
-				Date date = new Date(rs.getDate("FECHA_NACIMIENTO").getTime());
-				((Amigo)contactoAux).setFechaNacimiento(date);
+				if(rs.getDate("FECHA_NACIMIENTO")==null){
+					((Amigo)contactoAux).setFechaNacimiento(null);
+				}else{
+					Date date = new Date(rs.getDate("FECHA_NACIMIENTO").getTime());
+					((Amigo)contactoAux).setFechaNacimiento(date);
+				}
 				amigos.add(contactoAux);
 			}
 		} catch (SQLException e) {

@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import controlador.ControladorVentana;
+
 import modelo.Agenda;
 
 public class VentanaInicio extends JFrame {

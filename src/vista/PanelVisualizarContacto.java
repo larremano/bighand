@@ -1,5 +1,6 @@
 package vista;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -16,6 +17,7 @@ import modelo.Amigo;
 import modelo.Contacto;
 import modelo.Profesional;
 import controlador.ControladorContactos;
+import controlador.ControladorVentana;
 
 public class PanelVisualizarContacto extends JPanel{
 	private static final long serialVersionUID = 1L;
@@ -163,8 +165,12 @@ public class PanelVisualizarContacto extends JPanel{
 		if(contacto instanceof Amigo){
 			jTFFechaNacimiento.setEnabled(true);
 			jTFSector.setEnabled(false);
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			jTFFechaNacimiento.setText(sdf.format(((Amigo)contacto).getFechaNacimiento()));
+			if(((Amigo)contacto).getFechaNacimiento() == null){
+				jTFFechaNacimiento.setText("");
+			}else{
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				jTFFechaNacimiento.setText(sdf.format(((Amigo)contacto).getFechaNacimiento()));
+			}
 		}else{
 			jTFFechaNacimiento.setEnabled(false);
 			jTFSector.setEnabled(true);
@@ -246,25 +252,35 @@ public class PanelVisualizarContacto extends JPanel{
 	}
 
 	protected void actualizarContacto() {
-		Contacto contactoAux = contacto;
-		contactoAux.setNombre(jTFNombre.getText());
-		contactoAux.setDireccion(jTFDireccion.getText());
-		contactoAux.setTelefono(jTFTelefono.getText());
-		contactoAux.setEMail(jTFeMail.getText());
-		if(contacto instanceof Amigo){
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			try {
-				((Amigo)contactoAux).setFechaNacimiento(sdf.parse(jTFFechaNacimiento.getText()));
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
+		if(jTFNombre.getText().equals("")){
+			jTFNombre.setBackground(Color.RED);
+			jTFNombre.setText("Introduce un contacto");
 		}else{
-			((Profesional)contactoAux).setSector(jTFSector.getText());
+			Contacto contactoAux = contacto;
+			contactoAux.setNombre(jTFNombre.getText());
+			contactoAux.setDireccion(jTFDireccion.getText());
+			contactoAux.setTelefono(jTFTelefono.getText());
+			contactoAux.setEMail(jTFeMail.getText());
+			if(contacto instanceof Amigo){
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				try {
+					if("".equals(jTFFechaNacimiento.getText())){
+						((Amigo)contactoAux).setFechaNacimiento(null);
+					}else{
+						((Amigo)contactoAux).setFechaNacimiento(sdf.parse(jTFFechaNacimiento.getText()));
+					}
+				} catch (ParseException e) {
+					jTFFechaNacimiento.setBackground(Color.RED);
+					jTFFechaNacimiento.setText("Introduce una fecha válida");
+				}
+			}else{
+				((Profesional)contactoAux).setSector(jTFSector.getText());
+			}
+			ControladorContactos cc = new ControladorContactos();
+			cc.actualizar(contactoAux);
+			cv.getAgenda().refresh();
+			volverInicio();
 		}
-		ControladorContactos cc = new ControladorContactos();
-		cc.actualizar(contactoAux);
-		cv.getAgenda().refresh();
-		volverInicio();
 	}
 
 	private JButton getJBEliminar() {

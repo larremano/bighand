@@ -12,6 +12,8 @@ import javax.swing.JScrollPane;
 
 import modelo.Cita;
 import controlador.ControladorListadoCitas;
+import controlador.ControladorVentana;
+
 import java.awt.Rectangle;
 
 public class PanelListarCitas extends JPanel{
