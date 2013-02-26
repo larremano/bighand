@@ -132,6 +132,18 @@ public class Calendario {
 		return labels;
 	}
 	
+	public static int calcularMesInt(int mesIncrementoInt){
+		int mesActualInt = cal.get(Calendar.MONTH);
+		mesCalculadoInt = mesActualInt + mesIncrementoInt;
+		Calendar cal = Calendar.getInstance();
+		cal.set(cal.get(Calendar.YEAR),mesCalculadoInt,1);
+		mesCalculadoInt = cal.get(Calendar.MONTH);
+		yearCalculadoInt = cal.get(Calendar.YEAR);
+		
+		return mesCalculadoInt;
+		
+	}
+	
 	public static String calcularMes(int mesIncrementoInt){
 		String mesString = "";
 		int mesActualInt = cal.get(Calendar.MONTH);
@@ -140,7 +152,7 @@ public class Calendario {
 		cal.set(cal.get(Calendar.YEAR),mesCalculadoInt,1);
 		mesCalculadoInt = cal.get(Calendar.MONTH);
 		yearCalculadoInt = cal.get(Calendar.YEAR);
-		calcularYear();
+		//calcularYear();
 		switch(mesCalculadoInt){
 		case 0:
 			mesString = "Enero";

@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -12,13 +13,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import modelo.Calendario;
+import modelo.Cita;
+
 import java.awt.GridLayout;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.SwingConstants;
 
+import controlador.ControladorListadoCitas;
 import controlador.ControladorVentana;
+import java.awt.event.KeyEvent;
 
 public class PanelInicio extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -155,11 +162,22 @@ public class PanelInicio extends JPanel {
 		mapaEtiquetas.put(40, jLabel40);
 		mapaEtiquetas.put(41, jLabel41);
 		mapaEtiquetas.put(42, jLabel42);
+		ControladorListadoCitas clCitas = new ControladorListadoCitas(cv.getAgenda());
 		for(int i = 1; i < 43; i++){
+			mapaEtiquetas.get(i).setForeground(Color.BLACK);
 			if(labels.get(i)==0){
 				mapaEtiquetas.get(i).setText("");
 			}else{
 				mapaEtiquetas.get(i).setText(labels.get(i).toString());
+				for(Cita cita : clCitas.cargarListado()){
+					Calendar cal = Calendar.getInstance();
+					cal.set(cal.get(Calendar.YEAR),cal.get(Calendar.MONTH)+mes,labels.get(i));
+					System.out.println(cal.get(Calendar.MONTH));
+					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+					if(sdf.format(cita.getDate()).equals(sdf.format(cal.getTime()))){
+						mapaEtiquetas.get(i).setForeground(Color.magenta);
+					}
+				}
 			}
 		}
 	}
@@ -206,6 +224,7 @@ public class PanelInicio extends JPanel {
 			gridBagConstraints11.gridy = 0;
 			jLMes = new JLabel();
 			jLMes.setText("JLabel");
+			jLMes.setDisplayedMnemonic(KeyEvent.VK_UNDEFINED);
 			GridBagConstraints gridBagConstraints1 = new GridBagConstraints();
 			gridBagConstraints1.gridx = 1;
 			gridBagConstraints1.insets = new Insets(10, 20, 10, 20);
